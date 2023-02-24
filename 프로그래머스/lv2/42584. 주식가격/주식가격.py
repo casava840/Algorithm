@@ -13,7 +13,6 @@ def solution(prices):
                 break
         if flag:
             answer.append(len(deq))
-    answer.append(1)
-    answer.append(0)
+    answer.extend([1,0])
             
     return answer 
