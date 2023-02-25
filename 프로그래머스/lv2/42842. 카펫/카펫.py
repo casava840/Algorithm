@@ -1,12 +1,8 @@
 def solution(brown, yellow):
-    sum=brown + yellow
-    answer=[]
-    for i in range(3,sum):
-        if sum%i == 0:
-            answer.append(i)
-    print('answer: ',answer)
-    for i in range(0, len(answer)):
-        for j in range(i, len(answer)):
-            if answer[i]*answer[j]==sum and answer[i]+answer[j]-2==brown/2:
-                return [answer[j],answer[i]]
-                break
+    a = (brown+4)/2 #x+y
+    b = brown + yellow #x*y
+    y = (a-(a**2-4*b)**(1/2))/2
+    x = b/y
+    if x<y:
+        x,y = y,x
+    return [x,y]
