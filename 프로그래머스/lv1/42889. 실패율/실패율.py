@@ -1,27 +1,5 @@
-
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
 def solution(N, stages):
-    answer = []
-    rate = []
+    answer = {}
     fail = [0]*N
     total_user = len(stages)
     while stages:
@@ -30,12 +8,9 @@ def solution(N, stages):
             fail[temp-1] += 1
     for i in range(N):
         if fail[i] != 0:
-            rate.append([fail[i]/total_user,i+1])
+            answer[i+1] = fail[i] / total_user
             total_user -= fail[i]
         else:
-            rate.append([0,i+1])
-
-    rate.sort(key = lambda x: x[0] ,reverse=True)
-    for i in range(len(rate)):
-        answer.append(rate[i][1])
-    return answer
+            answer[i+1] = 0
+            
+    return sorted(answer, key = lambda x: answer[x] ,reverse=True)
